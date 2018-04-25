@@ -1,0 +1,87 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatLab104Program", "UDP_MatLab\MatLab104Program.csproj", "{98CC8F9A-C88A-4615-BB8F-B9CF8F153576}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UDPMatLab", "UDP_MatLabDB\UDPMatLab.csproj", "{4FC76793-127F-49CE-A4FE-5BD6C0044254}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "serialize", "serialize\serialize.csproj", "{647D20E2-0C05-456E-8631-5A78D41F7D7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lib60870", "lib60870\lib60870.csproj", "{F604286A-1AFC-4355-8C2C-A998CFCEE979}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IEC104DB", "IEC104DB\IEC104DB.csproj", "{E5EE359A-E353-464A-80B5-217664F74C1D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{98CC8F9A-C88A-4615-BB8F-B9CF8F153576}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98CC8F9A-C88A-4615-BB8F-B9CF8F153576}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98CC8F9A-C88A-4615-BB8F-B9CF8F153576}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{98CC8F9A-C88A-4615-BB8F-B9CF8F153576}.Debug|x86.Build.0 = Debug|Any CPU
+		{98CC8F9A-C88A-4615-BB8F-B9CF8F153576}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98CC8F9A-C88A-4615-BB8F-B9CF8F153576}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98CC8F9A-C88A-4615-BB8F-B9CF8F153576}.Release|x86.ActiveCfg = Release|Any CPU
+		{98CC8F9A-C88A-4615-BB8F-B9CF8F153576}.Release|x86.Build.0 = Release|Any CPU
+		{4FC76793-127F-49CE-A4FE-5BD6C0044254}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FC76793-127F-49CE-A4FE-5BD6C0044254}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FC76793-127F-49CE-A4FE-5BD6C0044254}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4FC76793-127F-49CE-A4FE-5BD6C0044254}.Debug|x86.Build.0 = Debug|Any CPU
+		{4FC76793-127F-49CE-A4FE-5BD6C0044254}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FC76793-127F-49CE-A4FE-5BD6C0044254}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FC76793-127F-49CE-A4FE-5BD6C0044254}.Release|x86.ActiveCfg = Release|Any CPU
+		{4FC76793-127F-49CE-A4FE-5BD6C0044254}.Release|x86.Build.0 = Release|Any CPU
+		{647D20E2-0C05-456E-8631-5A78D41F7D7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{647D20E2-0C05-456E-8631-5A78D41F7D7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{647D20E2-0C05-456E-8631-5A78D41F7D7B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{647D20E2-0C05-456E-8631-5A78D41F7D7B}.Debug|x86.Build.0 = Debug|Any CPU
+		{647D20E2-0C05-456E-8631-5A78D41F7D7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{647D20E2-0C05-456E-8631-5A78D41F7D7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{647D20E2-0C05-456E-8631-5A78D41F7D7B}.Release|x86.ActiveCfg = Release|Any CPU
+		{647D20E2-0C05-456E-8631-5A78D41F7D7B}.Release|x86.Build.0 = Release|Any CPU
+		{F604286A-1AFC-4355-8C2C-A998CFCEE979}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{F604286A-1AFC-4355-8C2C-A998CFCEE979}.Debug|x86.ActiveCfg = Debug|x86
+		{F604286A-1AFC-4355-8C2C-A998CFCEE979}.Debug|x86.Build.0 = Debug|x86
+		{F604286A-1AFC-4355-8C2C-A998CFCEE979}.Release|Any CPU.ActiveCfg = Release|x86
+		{F604286A-1AFC-4355-8C2C-A998CFCEE979}.Release|x86.ActiveCfg = Release|x86
+		{F604286A-1AFC-4355-8C2C-A998CFCEE979}.Release|x86.Build.0 = Release|x86
+		{E5EE359A-E353-464A-80B5-217664F74C1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5EE359A-E353-464A-80B5-217664F74C1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5EE359A-E353-464A-80B5-217664F74C1D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E5EE359A-E353-464A-80B5-217664F74C1D}.Debug|x86.Build.0 = Debug|Any CPU
+		{E5EE359A-E353-464A-80B5-217664F74C1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5EE359A-E353-464A-80B5-217664F74C1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5EE359A-E353-464A-80B5-217664F74C1D}.Release|x86.ActiveCfg = Release|Any CPU
+		{E5EE359A-E353-464A-80B5-217664F74C1D}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BD1E5096-5EA7-48F9-9326-3BDEF01964AB}
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = None
+		$1.ResourceNamePolicy = FileFormatDefault
+		$0.StandardHeader = $2
+		$2.Text = @/*\n *  Copyright 2016, 2017 MZ Automation GmbH\n *\n *  This file is part of lib60870.NET\n *\n *  lib60870.NET is free software: you can redistribute it and/or modify\n *  it under the terms of the GNU General Public License as published by\n *  the Free Software Foundation, either version 3 of the License, or\n *  (at your option) any later version.\n *\n *  lib60870.NET is distributed in the hope that it will be useful,\n *  but WITHOUT ANY WARRANTY; without even the implied warranty of\n *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n *  GNU General Public License for more details.\n *\n *  You should have received a copy of the GNU General Public License\n *  along with lib60870.NET.  If not, see <http://www.gnu.org/licenses/>.\n *\n *  See COPYING file for the complete license text.\n */\n\n
+		$2.IncludeInNewFiles = True
+		$0.NameConventionPolicy = $3
+		$3.Rules = $4
+		$4.NamingRule = $5
+		$5.AffectedEntity = None
+		$5.VisibilityMask = VisibilityMask
+		$5.NamingStyle = None
+		$5.IncludeInstanceMembers = True
+		$5.IncludeStaticEntities = True
+		StartupItem = lib60870\lib60870.csproj
+	EndGlobalSection
+EndGlobal
