@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace UDPMatLab
+namespace SimulinkIEC104
 {
     public class ReceivingParameter : Parameter
     {

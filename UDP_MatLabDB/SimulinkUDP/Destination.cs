@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Xml.Serialization;
 
-namespace UDPMatLab
+namespace SimulinkIEC104
 {
     public delegate void DebugMessageHadler(Destination destination, string message, byte debugLevel);
 

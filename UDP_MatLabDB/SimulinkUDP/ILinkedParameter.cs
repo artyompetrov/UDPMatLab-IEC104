@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace UDPMatLab
+namespace SimulinkIEC104
 {
     interface ILinkedParameter
     {

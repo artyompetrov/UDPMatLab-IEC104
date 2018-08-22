@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 
-namespace IEC104DB
+namespace SimulinkIEC104
 {
     public class IEC104Connection : IEC104Destination
     {

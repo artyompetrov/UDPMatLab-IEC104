@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace IEC104DB
+namespace SimulinkIEC104
 {
     public delegate void IEC104ParameterValueChangedHadler(IEC104Parameter data);
 

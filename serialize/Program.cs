@@ -1,11 +1,10 @@
-﻿using IEC104DB;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
-using UDPMatLab;
+using SimulinkIEC104;
 
 namespace Serializator
 {
@@ -13,7 +12,7 @@ namespace Serializator
     {
         static void Main(string[] args)
         {
-            Matlab104Program.Settings s = new Matlab104Program.Settings();
+            Settings s = new Settings();
             
             var dest = new Destination();
             dest.IP = "10.221.0.200";
@@ -63,7 +62,7 @@ namespace Serializator
 
             s.IEC104Destinations.Add(IEC104dest);
 
-            XmlSerializer formatter = new XmlSerializer(typeof(Matlab104Program.Settings));
+            XmlSerializer formatter = new XmlSerializer(typeof(Settings));
 
             using (FileStream fs = new FileStream("database.xml", FileMode.Create))
             {

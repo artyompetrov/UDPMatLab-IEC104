@@ -7,7 +7,7 @@
     <ProjectGuid>{4FC76793-127F-49CE-A4FE-5BD6C0044254}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UDPMatLab</RootNamespace>
+    <RootNamespace>SimulinkIEC104</RootNamespace>
     <AssemblyName>UDPMatLab</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -40,13 +40,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ILinkedParameter.cs" />
-    <Compile Include="Parameter.cs" />
-    <Compile Include="Destination.cs" />
-    <Compile Include="ParameterUniqueID.cs" />
+    <Compile Include="IEC104\IEC104CommonAdress.cs" />
+    <Compile Include="IEC104\IEC104Connection.cs" />
+    <Compile Include="IEC104\IEC104Destination.cs" />
+    <Compile Include="IEC104\IEC104Parameter.cs" />
+    <Compile Include="IEC104\IEC104ReceiveParameter.cs" />
+    <Compile Include="IEC104\IEC104SendParameter.cs" />
+    <Compile Include="IEC104\IEC104Server.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="SimulinkUDP\ILinkedParameter.cs" />
+    <Compile Include="SimulinkUDP\Parameter.cs" />
+    <Compile Include="SimulinkUDP\Destination.cs" />
+    <Compile Include="SimulinkUDP\ParameterUniqueID.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReceivingParameter.cs" />
-    <Compile Include="SendingParameter.cs" />
+    <Compile Include="SimulinkUDP\ReceivingParameter.cs" />
+    <Compile Include="SimulinkUDP\SendingParameter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\lib60870\lib60870.csproj">
+      <Project>{f604286a-1afc-4355-8c2c-a998cfcee979}</Project>
+      <Name>lib60870</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

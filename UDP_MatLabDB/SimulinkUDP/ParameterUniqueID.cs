@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace UDPMatLab
+namespace SimulinkIEC104
 {
     public static class ParameterUniqueID
     {

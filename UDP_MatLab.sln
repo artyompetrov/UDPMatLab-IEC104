@@ -5,13 +5,13 @@ VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatLab104Program", "UDP_MatLab\MatLab104Program.csproj", "{98CC8F9A-C88A-4615-BB8F-B9CF8F153576}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UDPMatLab", "UDP_MatLabDB\UDPMatLab.csproj", "{4FC76793-127F-49CE-A4FE-5BD6C0044254}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimulinkIEC104", "UDP_MatLabDB\SimulinkIEC104.csproj", "{4FC76793-127F-49CE-A4FE-5BD6C0044254}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "serialize", "serialize\serialize.csproj", "{647D20E2-0C05-456E-8631-5A78D41F7D7B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lib60870", "lib60870\lib60870.csproj", "{F604286A-1AFC-4355-8C2C-A998CFCEE979}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IEC104DB", "IEC104DB\IEC104DB.csproj", "{E5EE359A-E353-464A-80B5-217664F74C1D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Configurator", "Configurator\Configurator.csproj", "{0CAB9AC0-79FA-4161-AC39-DC0A87C774E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,14 +51,14 @@ Global
 		{F604286A-1AFC-4355-8C2C-A998CFCEE979}.Release|Any CPU.ActiveCfg = Release|x86
 		{F604286A-1AFC-4355-8C2C-A998CFCEE979}.Release|x86.ActiveCfg = Release|x86
 		{F604286A-1AFC-4355-8C2C-A998CFCEE979}.Release|x86.Build.0 = Release|x86
-		{E5EE359A-E353-464A-80B5-217664F74C1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E5EE359A-E353-464A-80B5-217664F74C1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E5EE359A-E353-464A-80B5-217664F74C1D}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{E5EE359A-E353-464A-80B5-217664F74C1D}.Debug|x86.Build.0 = Debug|Any CPU
-		{E5EE359A-E353-464A-80B5-217664F74C1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E5EE359A-E353-464A-80B5-217664F74C1D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E5EE359A-E353-464A-80B5-217664F74C1D}.Release|x86.ActiveCfg = Release|Any CPU
-		{E5EE359A-E353-464A-80B5-217664F74C1D}.Release|x86.Build.0 = Release|Any CPU
+		{0CAB9AC0-79FA-4161-AC39-DC0A87C774E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CAB9AC0-79FA-4161-AC39-DC0A87C774E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CAB9AC0-79FA-4161-AC39-DC0A87C774E1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0CAB9AC0-79FA-4161-AC39-DC0A87C774E1}.Debug|x86.Build.0 = Debug|Any CPU
+		{0CAB9AC0-79FA-4161-AC39-DC0A87C774E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CAB9AC0-79FA-4161-AC39-DC0A87C774E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CAB9AC0-79FA-4161-AC39-DC0A87C774E1}.Release|x86.ActiveCfg = Release|Any CPU
+		{0CAB9AC0-79FA-4161-AC39-DC0A87C774E1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

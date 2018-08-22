@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
-using UDPMatLab;
+using SimulinkIEC104;
 
-namespace IEC104DB
+namespace SimulinkIEC104
 {
     public class IEC104ReceiveParameter : IEC104Parameter
     {

@@ -6,7 +6,7 @@ using System.Net;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace IEC104DB
+namespace SimulinkIEC104
 {
     [XmlInclude(typeof(IEC104Server))]
     [XmlInclude(typeof(IEC104Connection))]

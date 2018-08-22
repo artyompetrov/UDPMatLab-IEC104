@@ -44,13 +44,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IEC104DB\IEC104DB.csproj">
-      <Project>{E5EE359A-E353-464A-80B5-217664F74C1D}</Project>
-      <Name>IEC104DB</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UDP_MatLabDB\UDPMatLab.csproj">
+    <ProjectReference Include="..\UDP_MatLabDB\SimulinkIEC104.csproj">
       <Project>{4FC76793-127F-49CE-A4FE-5BD6C0044254}</Project>
-      <Name>UDPMatLab</Name>
+      <Name>SimulinkIEC104</Name>
     </ProjectReference>
     <ProjectReference Include="..\UDP_MatLab\MatLab104Program.csproj">
       <Project>{98cc8f9a-c88a-4615-bb8f-b9cf8f153576}</Project>

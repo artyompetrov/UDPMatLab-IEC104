@@ -39,18 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IEC104CommonAdress.cs" />
-    <Compile Include="IEC104Connection.cs" />
-    <Compile Include="IEC104Destination.cs" />
-    <Compile Include="IEC104ReceiveParameter.cs" />
-    <Compile Include="IEC104SendParameter.cs" />
-    <Compile Include="IEC104Server.cs" />
-    <Compile Include="IEC104Parameter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\lib60870\lib60870.csproj">
-      <Project>{F604286A-1AFC-4355-8C2C-A998CFCEE979}</Project>
+      <Project>{f604286a-1afc-4355-8c2c-a998cfcee979}</Project>
       <Name>lib60870</Name>
     </ProjectReference>
     <ProjectReference Include="..\UDP_MatLabDB\UDPMatLab.csproj">

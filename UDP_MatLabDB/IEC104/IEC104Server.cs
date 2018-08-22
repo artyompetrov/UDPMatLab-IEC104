@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace IEC104DB
+namespace SimulinkIEC104
 {
     public class IEC104Server
     {

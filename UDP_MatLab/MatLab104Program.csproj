@@ -42,20 +42,15 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IEC104DB\IEC104DB.csproj">
-      <Project>{E5EE359A-E353-464A-80B5-217664F74C1D}</Project>
-      <Name>IEC104DB</Name>
-    </ProjectReference>
     <ProjectReference Include="..\lib60870\lib60870.csproj">
       <Project>{f604286a-1afc-4355-8c2c-a998cfcee979}</Project>
       <Name>lib60870</Name>
     </ProjectReference>
-    <ProjectReference Include="..\UDP_MatLabDB\UDPMatLab.csproj">
+    <ProjectReference Include="..\UDP_MatLabDB\SimulinkIEC104.csproj">
       <Project>{4FC76793-127F-49CE-A4FE-5BD6C0044254}</Project>
-      <Name>UDPMatLab</Name>
+      <Name>SimulinkIEC104</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
