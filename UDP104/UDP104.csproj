@@ -48,8 +48,8 @@
       <Project>{f604286a-1afc-4355-8c2c-a998cfcee979}</Project>
       <Name>lib60870</Name>
     </ProjectReference>
-    <ProjectReference Include="..\UDP_MatLabDB\SimulinkIEC104.csproj">
-      <Project>{4FC76793-127F-49CE-A4FE-5BD6C0044254}</Project>
+    <ProjectReference Include="..\SimulinkIEC104\SimulinkIEC104.csproj">
+      <Project>{4fc76793-127f-49ce-a4fe-5bd6c0044254}</Project>
       <Name>SimulinkIEC104</Name>
     </ProjectReference>
   </ItemGroup>

@@ -44,13 +44,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UDP_MatLabDB\SimulinkIEC104.csproj">
-      <Project>{4FC76793-127F-49CE-A4FE-5BD6C0044254}</Project>
+    <ProjectReference Include="..\SimulinkIEC104\SimulinkIEC104.csproj">
+      <Project>{4fc76793-127f-49ce-a4fe-5bd6c0044254}</Project>
       <Name>SimulinkIEC104</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UDP_MatLab\MatLab104Program.csproj">
-      <Project>{98cc8f9a-c88a-4615-bb8f-b9cf8f153576}</Project>
-      <Name>MatLab104Program</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
