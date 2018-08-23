@@ -5,38 +5,62 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Configurator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid Name="_UDPGrid" Margin="0,0,241,0" DataContext="{Binding UDPDestinations}">
-        <ListBox Name="_lb" ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Left" Height="256" Margin="10,101,0,0" VerticalAlignment="Top" Width="178"/>
+        Title="MainWindow" Height="450" Width="1122">
+    <Grid Name="_UDPGrid" Margin="0,0,2,0">
+        <Grid HorizontalAlignment="Left" Height="332" Margin="10,65,0,0" VerticalAlignment="Top" Width="537" DataContext="{Binding UDPDestinations}">
+            <ListBox ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Left" Height="220" Margin="10,101,0,0" VerticalAlignment="Top" Width="153"/>
 
-        <TabControl HorizontalAlignment="Left" Height="256" Margin="203,65,-51,0" VerticalAlignment="Top" Width="333">
-            <TabItem Header="Общие параметры">
-                <Grid Background="#FFE5E5E5">
-                    <TextBox Text="{Binding Name}" HorizontalAlignment="Left" Height="23" Margin="19,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <TextBox Text="{Binding LocalPort}" HorizontalAlignment="Left" Height="23" Margin="19,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <TextBox Text="{Binding RemotePort}" HorizontalAlignment="Left" Height="23" Margin="19,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <TextBox Text="{Binding IP}" HorizontalAlignment="Left" Height="23" Margin="19,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <TabControl HorizontalAlignment="Left" Height="256" Margin="177,65,0,0" VerticalAlignment="Top" Width="352">
+                <TabItem Header="Общие параметры">
+                    <Grid Background="#FFE5E5E5">
+                        <TextBox Text="{Binding Name}" HorizontalAlignment="Left" Height="23" Margin="19,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                        <TextBox Text="{Binding LocalPort}" HorizontalAlignment="Left" Height="23" Margin="19,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                        <TextBox Text="{Binding RemotePort}" HorizontalAlignment="Left" Height="23" Margin="19,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                        <TextBox Text="{Binding IP}" HorizontalAlignment="Left" Height="23" Margin="19,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
-                </Grid>
-            </TabItem>
-            <TabItem Header="Передача">
-                <Grid Background="#FFE5E5E5">
-                    <DataGrid ItemsSource="{Binding SendingParameters}" HorizontalAlignment="Left" Height="208" Margin="10,10,0,0" VerticalAlignment="Top" Width="307"/>
-                </Grid>
-            </TabItem>
-            <TabItem Header="Прием">
-                <Grid Background="#FFE5E5E5">
-                    <DataGrid ItemsSource="{Binding ReceivingParameters}" HorizontalAlignment="Left" Height="208" Margin="10,10,0,0" VerticalAlignment="Top" Width="307">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" Binding="{Binding ID, Mode=TwoWay}"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </Grid>
-            </TabItem>
-        </TabControl>
-        <Button Content="+" HorizontalAlignment="Left" Margin="26,65,0,0" VerticalAlignment="Top" Width="26" Height="31"/>
-        <Button Content="-" HorizontalAlignment="Left" Margin="68,65,0,0" VerticalAlignment="Top" Width="29" Height="31"/>
-        <Button Content="Сохранить" HorizontalAlignment="Left" Margin="26,8,0,0" VerticalAlignment="Top" Width="71" Height="31"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Передача">
+                    <Grid Background="#FFE5E5E5">
+                        <DataGrid ItemsSource="{Binding SendingParameters}" HorizontalAlignment="Left" Height="208" Margin="10,10,0,0" VerticalAlignment="Top" Width="307"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Прием">
+                    <Grid Background="#FFE5E5E5">
+                        <DataGrid ItemsSource="{Binding ReceivingParameters}" HorizontalAlignment="Left" Height="208" Margin="10,10,0,0" VerticalAlignment="Top" Width="307">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="ID" Binding="{Binding ID, Mode=TwoWay}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+            <Button Content="+" HorizontalAlignment="Left" Margin="26,65,0,0" VerticalAlignment="Top" Width="26" Height="31"/>
+            <Button Content="-" HorizontalAlignment="Left" Margin="68,65,0,0" VerticalAlignment="Top" Width="29" Height="31"/>
+            <Button Content="Сохранить" HorizontalAlignment="Left" Margin="26,8,0,0" VerticalAlignment="Top" Width="71" Height="31"/>
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="332" Margin="566,65,0,0" VerticalAlignment="Top" Width="526" DataContext="{Binding IEC104Destinations}">
+            <Grid DataContext="{Binding CommonAdreses}" HorizontalAlignment="Left" Height="176" Margin="10,146,0,0" VerticalAlignment="Top" Width="491">
+                <TabControl HorizontalAlignment="Left" Height="156" Margin="152,10,-1,0" VerticalAlignment="Top" Width="340">
+                    <TabItem Header="Прием">
+                        <Grid Background="#FFE5E5E5">
+                            <DataGrid ItemsSource="{Binding ReceiveIOAs}" HorizontalAlignment="Left" Height="108" Margin="10,10,0,0" VerticalAlignment="Top" Width="314"/>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Передача">
+                        <Grid Background="#FFE5E5E5">
+                            <DataGrid ItemsSource="{Binding SendIOAs}" HorizontalAlignment="Left" Height="108" Margin="10,10,0,0" VerticalAlignment="Top" Width="314"/>
+                        </Grid>
+                    </TabItem>
+
+                </TabControl>
+                <ListBox ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Left" Height="156" Margin="10,10,0,0" VerticalAlignment="Top" Width="127"/>
+
+            </Grid>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="219,35,0,0" TextWrapping="Wrap" Text="{Binding BindingGroupName, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" VerticalAlignment="Top" Width="120"/>
+            <ComboBox ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Left" Margin="35,49,0,0" VerticalAlignment="Top" Width="120"/>
+        </Grid>
 
     </Grid>
+
 </Window>

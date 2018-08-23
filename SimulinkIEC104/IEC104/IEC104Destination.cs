@@ -13,9 +13,11 @@ namespace SimulinkIEC104
     public abstract class IEC104Destination
     {
         internal ApplicationLayerParameters _alp = new ApplicationLayerParameters();
-        public string Name { get; set; }
+        public string Name {
+            get;
+            set; }
 
-        public List<IEC104CommonAddress> CommonAdreses = new List<IEC104CommonAddress>();
+        public List<IEC104CommonAddress> CommonAdreses { get; set; } = new List<IEC104CommonAddress>();
 
         public void SubscribeOnSendingParametersChange()
         {
@@ -83,7 +85,10 @@ namespace SimulinkIEC104
 
         internal abstract void Send(IEC104Parameter data);
 
-
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 
    
