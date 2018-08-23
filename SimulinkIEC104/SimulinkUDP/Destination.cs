@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -23,6 +24,19 @@ namespace SimulinkIEC104
         private int? _receivingPacketSize = null;
         private Thread _receivingThread;
         private bool _stopReceive = false;
+        private string _name;
+
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                _name = value;                
+            }
+        }
 
         public int LocalPort
         {
@@ -254,7 +268,12 @@ namespace SimulinkIEC104
             if (_receivingThread != null) _receivingThread.Join();
         }
 
-        public List<ReceivingParameter> ReceivingParameters = new List<ReceivingParameter>();
-        public List<SendingParameter> SendingParameters = new List<SendingParameter>();
+        public override string ToString()
+        {
+            return _name + " "+_ip.ToString()+":"+_remotePort;
+        }
+
+        public List<ReceivingParameter> ReceivingParameters { get; set; } = new List<ReceivingParameter>();
+        public List<SendingParameter> SendingParameters { get; set; } = new List<SendingParameter>();
     }
 }

@@ -6,19 +6,34 @@
         xmlns:local="clr-namespace:Configurator"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <TabControl HorizontalAlignment="Left" Height="256" Margin="137,65,0,0" VerticalAlignment="Top" Width="333">
+    <Grid Name="_UDPGrid" Margin="0,0,241,0" DataContext="{Binding UDPDestinations}">
+        <ListBox Name="_lb" ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Left" Height="256" Margin="10,101,0,0" VerticalAlignment="Top" Width="178"/>
+
+        <TabControl HorizontalAlignment="Left" Height="256" Margin="203,65,-51,0" VerticalAlignment="Top" Width="333">
             <TabItem Header="Общие параметры">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <TextBox Text="{Binding Name}" HorizontalAlignment="Left" Height="23" Margin="19,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox Text="{Binding LocalPort}" HorizontalAlignment="Left" Height="23" Margin="19,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox Text="{Binding RemotePort}" HorizontalAlignment="Left" Height="23" Margin="19,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox Text="{Binding IP}" HorizontalAlignment="Left" Height="23" Margin="19,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+                </Grid>
             </TabItem>
             <TabItem Header="Передача">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid ItemsSource="{Binding SendingParameters}" HorizontalAlignment="Left" Height="208" Margin="10,10,0,0" VerticalAlignment="Top" Width="307"/>
+                </Grid>
             </TabItem>
             <TabItem Header="Прием">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid ItemsSource="{Binding ReceivingParameters}" HorizontalAlignment="Left" Height="208" Margin="10,10,0,0" VerticalAlignment="Top" Width="307">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding ID, Mode=TwoWay}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
             </TabItem>
         </TabControl>
-        <ListBox HorizontalAlignment="Left" Height="256" Margin="26,101,0,0" VerticalAlignment="Top" Width="100"/>
         <Button Content="+" HorizontalAlignment="Left" Margin="26,65,0,0" VerticalAlignment="Top" Width="26" Height="31"/>
         <Button Content="-" HorizontalAlignment="Left" Margin="68,65,0,0" VerticalAlignment="Top" Width="29" Height="31"/>
         <Button Content="Сохранить" HorizontalAlignment="Left" Margin="26,8,0,0" VerticalAlignment="Top" Width="71" Height="31"/>

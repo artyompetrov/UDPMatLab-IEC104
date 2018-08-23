@@ -15,6 +15,7 @@ namespace Serializator
             Settings s = new Settings();
             
             var dest = new Destination();
+            dest.Name = "Матлаб1";
             dest.IP = "10.221.0.200";
             dest.LocalPort = 15000;
             dest.RemotePort = 15001;
@@ -34,8 +35,18 @@ namespace Serializator
 
             var paramSend2 = new SendingParameter("I3", DataTypeEnum.Int32);
             dest.SendingParameters.Add(paramSend2);
-
             s.UDPDestinations.Add(dest);
+
+            var dest2 = new Destination();
+            dest2.Name = "Матлаб1789789";
+            dest2.IP = "10.221.0.200";
+            dest2.LocalPort = 15000;
+            dest2.RemotePort = 15001;
+
+            dest2.SendingParameters.Add(new SendingParameter("I3", DataTypeEnum.Double));
+            s.UDPDestinations.Add(dest2);
+            
+
 
             var IEC104dest = new IEC104Connection("127.0.0.1", 2405);
 

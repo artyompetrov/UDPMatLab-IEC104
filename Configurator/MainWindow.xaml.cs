@@ -38,12 +38,15 @@ namespace Configurator
                     _settings = (Settings)formatter.Deserialize(fs);
                 }
 
-                
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ошибка десериализации "+ ex.Message);
+                MessageBox.Show("Ошибка десериализации " + ex.Message);
             }
+
+            DataContext= _settings;
+             
         }
     }
 }
