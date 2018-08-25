@@ -5,12 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Configurator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="1122">
+        xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
+        Title="MainWindow" Height="419" Width="1097">
+    <Window.Resources>
+        <col:ArrayList x:Key="arrList">
+            <col:DictionaryEntry Key="Yes" Value="0"/>
+            <col:DictionaryEntry Key="No" Value="1"/>
+            <col:DictionaryEntry Key="No" Value="2"/>
+        </col:ArrayList>
+    </Window.Resources>
     <Grid Name="_UDPGrid" Margin="0,0,2,0">
-        <Grid HorizontalAlignment="Left" Height="332" Margin="10,65,0,0" VerticalAlignment="Top" Width="537" DataContext="{Binding UDPDestinations}">
-            <ListBox ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Left" Height="220" Margin="10,101,0,0" VerticalAlignment="Top" Width="153"/>
+        <Button Content="Сохранить" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="71" Height="31" Click="_save_Button_Click"/>
+        <Grid HorizontalAlignment="Left" Height="332" Margin="10,46,0,0" VerticalAlignment="Top" Width="537" DataContext="{Binding UDPDestinations}">
+            <ListBox Name="_lbUDPDestinations" ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Left" Height="281" Margin="10,40,0,0" VerticalAlignment="Top" Width="153"/>
 
-            <TabControl HorizontalAlignment="Left" Height="256" Margin="177,65,0,0" VerticalAlignment="Top" Width="352">
+            <TabControl HorizontalAlignment="Left" Height="311" Margin="177,10,0,0" VerticalAlignment="Top" Width="352">
                 <TabItem Header="Общие параметры">
                     <Grid Background="#FFE5E5E5">
                         <TextBox Text="{Binding Name}" HorizontalAlignment="Left" Height="23" Margin="19,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
@@ -22,43 +31,53 @@
                 </TabItem>
                 <TabItem Header="Передача">
                     <Grid Background="#FFE5E5E5">
-                        <DataGrid ItemsSource="{Binding SendingParameters}" HorizontalAlignment="Left" Height="208" Margin="10,10,0,0" VerticalAlignment="Top" Width="307"/>
+                        <DataGrid Name="_dgSendUDPparams" ItemsSource="{Binding SendingParameters, Mode=TwoWay}" AutoGeneratingColumn="DataGrid_AutoGeneratingColumn" HorizontalAlignment="Left" Height="208" Margin="10,10,0,0" VerticalAlignment="Top" Width="307"/>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Прием">
                     <Grid Background="#FFE5E5E5">
-                        <DataGrid ItemsSource="{Binding ReceivingParameters}" HorizontalAlignment="Left" Height="208" Margin="10,10,0,0" VerticalAlignment="Top" Width="307">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="ID" Binding="{Binding ID, Mode=TwoWay}"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
+                        <DataGrid Name="_dgReceiveUDPparams" ItemsSource="{Binding ReceivingParameters}" AutoGeneratingColumn="DataGrid_AutoGeneratingColumn" HorizontalAlignment="Left" Height="208" Margin="10,10,0,0" VerticalAlignment="Top" Width="307" />
                     </Grid>
                 </TabItem>
             </TabControl>
-            <Button Content="+" HorizontalAlignment="Left" Margin="26,65,0,0" VerticalAlignment="Top" Width="26" Height="31"/>
-            <Button Content="-" HorizontalAlignment="Left" Margin="68,65,0,0" VerticalAlignment="Top" Width="29" Height="31"/>
-            <Button Content="Сохранить" HorizontalAlignment="Left" Margin="26,8,0,0" VerticalAlignment="Top" Width="71" Height="31"/>
+            <Button Content="+" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="25" Height="25" Click="_addUDPDestination_Button_Click"/>
+            <Button Content="-" HorizontalAlignment="Left" Margin="40,10,0,0" VerticalAlignment="Top" Width="25" Height="25" Click="_deleteUDPDestination_Button_Click"/>
+            <Button Content="-" HorizontalAlignment="Left" Margin="40,10,0,0" VerticalAlignment="Top" Width="25" Height="25" Click="_deleteUDPDestination_Button_Click"/>
+
         </Grid>
-        <Grid HorizontalAlignment="Left" Height="332" Margin="566,65,0,0" VerticalAlignment="Top" Width="526" DataContext="{Binding IEC104Destinations}">
-            <Grid DataContext="{Binding CommonAdreses}" HorizontalAlignment="Left" Height="176" Margin="10,146,0,0" VerticalAlignment="Top" Width="491">
-                <TabControl HorizontalAlignment="Left" Height="156" Margin="152,10,-1,0" VerticalAlignment="Top" Width="340">
+        <Grid HorizontalAlignment="Left" Height="359" Margin="552,19,0,0" VerticalAlignment="Top" Width="540" DataContext="{Binding IEC104Destinations}">
+            <Grid DataContext="{Binding CommonAdreses}" HorizontalAlignment="Left" Height="318" Margin="10,50,0,0" VerticalAlignment="Top" Width="520">
+                <TabControl HorizontalAlignment="Left" Height="286" Margin="152,10,0,0" VerticalAlignment="Top" Width="358">
+
+                    <TabItem Header="Общие">
+                        <Grid Background="#FFE5E5E5">
+                            <TextBox Text="{Binding Name}" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox Text="{Binding CA}" HorizontalAlignment="Left" Height="23" Margin="10,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                        </Grid>
+                    </TabItem>
                     <TabItem Header="Прием">
                         <Grid Background="#FFE5E5E5">
-                            <DataGrid ItemsSource="{Binding ReceiveIOAs}" HorizontalAlignment="Left" Height="108" Margin="10,10,0,0" VerticalAlignment="Top" Width="314"/>
+                            <DataGrid Name="_dgReceiveIEC104params" ItemsSource="{Binding ReceiveIOAs}" AutoGeneratingColumn="DataGrid_AutoGeneratingColumn" HorizontalAlignment="Left" Height="238" Margin="10,10,0,0" VerticalAlignment="Top" Width="332"/>
                         </Grid>
                     </TabItem>
                     <TabItem Header="Передача">
                         <Grid Background="#FFE5E5E5">
-                            <DataGrid ItemsSource="{Binding SendIOAs}" HorizontalAlignment="Left" Height="108" Margin="10,10,0,0" VerticalAlignment="Top" Width="314"/>
+                            <DataGrid Name="_dgSendIEC104params" ItemsSource="{Binding SendIOAs}" AutoGeneratingColumn="DataGrid_AutoGeneratingColumn" HorizontalAlignment="Left" Height="238" Margin="10,10,0,0" VerticalAlignment="Top" Width="332"/>
                         </Grid>
                     </TabItem>
 
                 </TabControl>
-                <ListBox ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Left" Height="156" Margin="10,10,0,0" VerticalAlignment="Top" Width="127"/>
+                <ListBox Name ="_lbIEC104CommonAddresses" ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Left" Height="265" Margin="0,31,0,0" VerticalAlignment="Top" Width="137"/>
+                <Button Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="25"  Margin="0,1,0,0" Click="_addCAButton_Click" />
+                <Button Content="-" HorizontalAlignment="Left" Margin="29,1,0,0" VerticalAlignment="Top" Width="24" Height="25" Click="_removeCAButton_Click" />
 
             </Grid>
-            <TextBox HorizontalAlignment="Left" Height="23" Margin="219,35,0,0" TextWrapping="Wrap" Text="{Binding BindingGroupName, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" VerticalAlignment="Top" Width="120"/>
-            <ComboBox ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Left" Margin="35,49,0,0" VerticalAlignment="Top" Width="120"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="153,10,0,0" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Top" Width="120" LostFocus="TextBox_LostFocus"/>
+            <ComboBox Name="_cbIEC104Destinations" ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="_cbIEC104Destinations_SelectionChanged"/>
+            <Button Content="+" HorizontalAlignment="Left" Margin="282,8,0,0" VerticalAlignment="Top" Width="24" Height="25" Click="_addIEC104DestinationButton_Click" />
+            <Button Content="-" HorizontalAlignment="Left" Margin="311,8,0,0" VerticalAlignment="Top" Width="24" Height="25" Click="_deleteIEC104DestinationButton_Click" />
+            <TextBox Text="{Binding IP, ValidatesOnExceptions=True, UpdateSourceTrigger=PropertyChanged}" Name="_tbIPadsress" HorizontalAlignment="Left" Height="23" Margin="340,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
         </Grid>
 
     </Grid>

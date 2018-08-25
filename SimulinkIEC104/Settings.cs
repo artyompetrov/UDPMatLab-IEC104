@@ -8,9 +8,9 @@ namespace SimulinkIEC104
 {
     public class Settings
     {
-        public List<Destination> UDPDestinations { get; set; } = new List<Destination>();
+        public BindingList<Destination> UDPDestinations { get; set; } = new BindingList<Destination>();
 
-        public List<IEC104Destination> IEC104Destinations { get; set; } = new List<IEC104Destination>();
+        public BindingList<IEC104Destination> IEC104Destinations { get; set; } = new BindingList<IEC104Destination>();
 
     }
 }

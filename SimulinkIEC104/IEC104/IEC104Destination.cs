@@ -1,8 +1,10 @@
 ﻿using lib60870.CS101;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Net;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Xml.Serialization;
 
@@ -10,14 +12,36 @@ namespace SimulinkIEC104
 {
     [XmlInclude(typeof(IEC104Server))]
     [XmlInclude(typeof(IEC104Connection))]
-    public abstract class IEC104Destination
+    public abstract class IEC104Destination 
     {
         internal ApplicationLayerParameters _alp = new ApplicationLayerParameters();
-        public string Name {
-            get;
-            set; }
+        private string _name;
 
-        public List<IEC104CommonAddress> CommonAdreses { get; set; } = new List<IEC104CommonAddress>();
+
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                if (_name != value)
+                {
+                    _name = value;
+                }
+                
+            }
+         
+        } 
+
+        public IEC104Destination() { }
+        public IEC104Destination(string name)
+        {
+            Name = name;
+        }
+
+        public BindingList<IEC104CommonAddress> CommonAdreses { get; set; } = new BindingList<IEC104CommonAddress>();
 
         public void SubscribeOnSendingParametersChange()
         {

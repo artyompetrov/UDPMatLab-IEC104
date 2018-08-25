@@ -23,11 +23,11 @@ namespace SimulinkIEC104
             set
             {
 
-                if (IPAddress.TryParse(value, out IPAddress ip) || value == "")
+                if ( (IPAddress.TryParse(value, out IPAddress ip) && ip.ToString()==value) || value == "")
                 {
                     _ip = value;
                 }
-                else throw new ArgumentException("IP адрес указан неверно");
+                else throw new WrongDataException("IP адрес указан неверно");
             }
         }
 
@@ -43,7 +43,7 @@ namespace SimulinkIEC104
                 {
                     _port = value;
                 }
-                else throw new ArgumentException("Порт задан неверно");
+                else throw new WrongDataException("Порт задан неверно");
             }
         }
 
@@ -75,12 +75,14 @@ namespace SimulinkIEC104
             }
         }
 
-        public IEC104Connection(string ip, int port)
+        public IEC104Connection(string name) : base(name) {  }
+
+        public IEC104Connection(string ip, int port):base()
         {
             IP = ip;
             Port = port;
         }
 
-        public IEC104Connection() { }
+        public IEC104Connection():base() { }
     }
 }

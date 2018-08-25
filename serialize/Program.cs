@@ -75,7 +75,7 @@ namespace Serializator
 
             XmlSerializer formatter = new XmlSerializer(typeof(Settings));
 
-            using (FileStream fs = new FileStream("database.xml", FileMode.Create))
+            using (FileStream fs = new FileStream("settings.xml", FileMode.Create))
             {
                 formatter.Serialize(fs, s);
             }

@@ -20,7 +20,7 @@ namespace SimulinkIEC104
         internal ValueChangedHadler _valueChangedHadler = null;
         private object _value = null;
         internal DataTypeEnum _dataTypeEnum;
-        public string OiName { get; set; }
+        public string Name { get; set; }
 
         [XmlAttribute]
         public int ID
@@ -96,7 +96,7 @@ namespace SimulinkIEC104
 
         internal Parameter(string oiName, DataTypeEnum type)
         {
-            OiName = oiName;
+            Name = oiName;
             DataType = type;
             ParameterUniqueID.Set(this);
         }

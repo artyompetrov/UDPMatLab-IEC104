@@ -17,7 +17,9 @@ namespace SimulinkIEC104
         {
             get
             {
-                string result = String.Empty;
+                if (UDPparameters.Count == 0) return string.Empty;
+
+                string result = string.Empty;
                 foreach (SendingParameter param in UDPparameters)
                 {
                     result += "," + ParameterUniqueID.Get(param).ToString();
@@ -26,6 +28,9 @@ namespace SimulinkIEC104
             }
             set
             {
+                UDPparameters.Clear();
+                if (value == string.Empty || value == null) return;
+
                 string[] idS = value.Split(',');
                 foreach (var id in idS)
                 {
