@@ -50,6 +50,7 @@
     <Compile Include="IEC104\IEC104ReceiveParameter.cs" />
     <Compile Include="IEC104\IEC104SendParameter.cs" />
     <Compile Include="IEC104\IEC104Server.cs" />
+    <Compile Include="IEC104\UniqueID.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="SimulinkUDP\ILinkedParameter.cs" />
     <Compile Include="SimulinkUDP\Parameter.cs" />

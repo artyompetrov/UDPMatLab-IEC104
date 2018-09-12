@@ -1,16 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Xml.Serialization;
 using SimulinkIEC104;
 
 namespace SimulinkIEC104
 {
-    public class IEC104SendParameter : IEC104Parameter
+    public class IEC104SendParameter : IEC104Parameter, INotifyPropertyChanged
     {
         private IEC104ParameterValueChangedHadler _valueChangedHadler;
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public override void SetCA(IEC104CommonAddress ca)
+        {
+            _uid = ca.SendUniqueIOA;
+
+        }
         public int? UDPParameterID
         {
             get
@@ -30,6 +44,7 @@ namespace SimulinkIEC104
                     if (param != null)
                     {
                         UDPParameter = (ReceivingParameter)param;
+                        UDPParameter.LinkedParameters.Add(this);
                     }
                     else throw new Exception("Нет параметра с таким ID");
                 }
@@ -79,11 +94,29 @@ namespace SimulinkIEC104
         [XmlIgnore]
         public ReceivingParameter UDPParameter { get; set; }
 
+        public void SetUDPParameter(ReceivingParameter receivingParameter)
+        {
+            
+            UDPParameter = receivingParameter;
+            UDPParameter.LinkedParameters.Add(this);
+            NotifyPropertyChanged("UDPParameterID");
+        }
+        public void ClearUDPParameter()
+        {
+            if (UDPParameter != null)
+            {
+                UDPParameter.LinkedParameters.Remove(this);
+                UDPParameter = null;
+            }
+
+            NotifyPropertyChanged("UDPParameterID");
+        }
+         
         public IEC104SendParameter(int ioa)
         {
             IOA = ioa;
         }
 
-        IEC104SendParameter() { }
+        public IEC104SendParameter() { }
     }
 }

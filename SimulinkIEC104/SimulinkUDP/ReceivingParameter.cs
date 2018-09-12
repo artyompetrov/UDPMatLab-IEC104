@@ -9,7 +9,7 @@ namespace SimulinkIEC104
     public class ReceivingParameter : Parameter
     {
         [XmlIgnore]
-        List<ILinkedParameter> LinkedParameters = new List<ILinkedParameter>();
+        public List<IEC104SendParameter> LinkedParameters = new List<IEC104SendParameter>();
 
         public bool SetValueFromBytes(byte[] bytes, int startIndex)
         {
@@ -42,6 +42,15 @@ namespace SimulinkIEC104
         public void AddValueChangedHandler(ValueChangedHadler handler)
         {
             _valueChangedHadler += handler;
+        }
+
+        public void ClearSourceParameter()
+        {
+            foreach (var param in LinkedParameters.ToArray())
+            {
+                param.ClearUDPParameter();
+            }
+            LinkedParameters.Clear();
         }
     }
 }

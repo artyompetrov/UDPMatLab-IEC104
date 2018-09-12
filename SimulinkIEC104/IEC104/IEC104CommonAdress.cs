@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
@@ -7,16 +8,55 @@ namespace SimulinkIEC104
 {
     public class IEC104CommonAddress
     {
-        public int CA { get; set; }
+        private int _ca;
+        private UniqueID _uid;
+
+        public int CA
+        {
+            get
+            {
+                if (_uid == null)
+                {
+                    return _ca;
+                }
+                else
+                {
+                    return _uid.Get(this);
+                }
+            }
+            set
+            {
+                if (_uid == null)
+                {
+                    _ca = value;
+                }
+                else
+                {
+                    _uid.Set(this, value);
+                }
+            }
+        }
+
+        public void SetDestination(IEC104Destination dest)
+        {
+            _uid = dest.Uid;
+            _uid.Set(this, _ca);
+        }
+
+        public void DeleteCa()
+        {
+            _uid.DeleteParameter(this);
+        }
+
         public string Name { get; set; }
 
-        public List<IEC104SendParameter> SendIOAs { get; set; }  = new List<IEC104SendParameter>();
-        public List<IEC104ReceiveParameter> ReceiveIOAs { get; set; } = new List<IEC104ReceiveParameter>();
+        public UniqueID SendUniqueIOA = new UniqueID();
+        public UniqueID RecieveUniqueIOA = new UniqueID();
 
-        public IEC104CommonAddress(int ca)
-        {
-            CA = ca;
-        }
+        public BindingList<IEC104SendParameter> SendIOAs { get; set; }  = new BindingList<IEC104SendParameter>();
+        public BindingList<IEC104ReceiveParameter> ReceiveIOAs { get; set; } = new BindingList<IEC104ReceiveParameter>();
+
+
 
         public IEC104ReceiveParameter GetRecieveParameterByIOA(int ioa)
         {
@@ -29,11 +69,7 @@ namespace SimulinkIEC104
         }
 
         public IEC104CommonAddress() { }
-        public IEC104CommonAddress(string name, int ca)
-        {
-            Name = name;
-            CA = ca;
-        }
+
         public IEC104CommonAddress(string name)
         {
             Name = name;

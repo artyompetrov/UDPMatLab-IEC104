@@ -1,17 +1,63 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Xml.Serialization;
 using SimulinkIEC104;
 
 namespace SimulinkIEC104
 {
-    public class IEC104ReceiveParameter : IEC104Parameter
+    public class IEC104ReceiveParameter : IEC104Parameter, INotifyPropertyChanged
     {
         
         [XmlIgnore]
         public List<SendingParameter> UDPparameters = new List<SendingParameter>();
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public void NotifyUDPparameterIDsChanged()
+        {
+            NotifyPropertyChanged("UDPparameterIDs");
+        }
+
+        public override void SetCA(IEC104CommonAddress ca)
+        {
+            _uid = ca.RecieveUniqueIOA;
+
+        }
+
+        public void ClearUDPparameters()
+        {
+            foreach (var param in UDPparameters)
+            {
+                param.SourceParameter = null;
+            }
+            UDPparameters.Clear();
+            NotifyPropertyChanged("UDPparameterIDs");
+        }
+
+        public void AddUDPparameter(SendingParameter param)
+        {
+            var sendingParam = param;
+
+            if (sendingParam.SourceParameter == null)
+            {
+                sendingParam.SourceParameter = this;
+                UDPparameters.Add(sendingParam);
+            }
+            else
+                throw new WrongDataException("Данный параметр уже имеет свой источник");
+
+            NotifyPropertyChanged("UDPparameterIDs");
+        }
+
 
         public string UDPparameterIDs
         {
@@ -24,7 +70,10 @@ namespace SimulinkIEC104
                 {
                     result += "," + ParameterUniqueID.Get(param).ToString();
                 }
+
+                
                 return result.Substring(1);
+                
             }
             set
             {
@@ -37,7 +86,11 @@ namespace SimulinkIEC104
                     var param = ParameterUniqueID.GetParameterById(int.Parse(id));
                     if (param!=null)
                     {
-                        UDPparameters.Add((SendingParameter)param);
+                        if (param.GetType() != typeof(SendingParameter)) throw  new WrongDataException("Неправильный ID");
+
+                        AddUDPparameter((SendingParameter)param);
+
+
                     }
                 }
 

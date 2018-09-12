@@ -1,21 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SimulinkIEC104
 {
-    public static class ParameterUniqueID
+    public class UniqueID
     {
-        private static Dictionary<Parameter, int> _ids = new Dictionary<Parameter, int>(); 
-        
-        public static void DeleteParameter(Parameter param)
+        private  Dictionary<object, int> _ids = new Dictionary<object, int>();
+
+        public  void DeleteParameter(object param)
         {
             _ids.Remove(param);
         }
 
-        public static int Get(Parameter parameter)
+        internal void Set(object parameter)
+        {
+            if (!_ids.ContainsKey(parameter))
+            {
+                int freeId = 0;
+                while (_ids.ContainsValue(freeId)) freeId++;
+                _ids.Add(parameter, freeId);
+            }
+        }
+
+        public int Get(object parameter)
         {
             if (_ids.ContainsKey(parameter))
             {
@@ -31,9 +41,9 @@ namespace SimulinkIEC104
             }
         }
 
-        internal static bool Set(Parameter parameter, int newId)
+        internal bool Set(object parameter, int newId)
         {
-            
+
             if (_ids.ContainsValue(newId))
             {
                 if (_ids.ContainsKey(parameter) && _ids[parameter] != newId)
@@ -54,28 +64,5 @@ namespace SimulinkIEC104
                 return true;
             }
         }
-
-        internal static void Set(Parameter parameter)
-        {
-            if (!_ids.ContainsKey(parameter))
-            {
-                int freeId = 0;
-                while (_ids.ContainsValue(freeId)) freeId++;
-                _ids.Add(parameter, freeId);
-            }
-        }
-
-        public static Parameter GetParameterById(int id)
-        {
-            for (int i = 0; i < _ids.Count; i++)
-            {
-                if(_ids.ElementAt(i).Value == id)
-                {
-                    return _ids.ElementAt(i).Key;
-                }
-            }
-            return null;
-        }
-
     }
 }

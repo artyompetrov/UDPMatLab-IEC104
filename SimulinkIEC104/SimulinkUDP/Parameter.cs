@@ -100,7 +100,11 @@ namespace SimulinkIEC104
             DataType = type;
             ParameterUniqueID.Set(this);
         }
-        
+
+        public override string ToString()
+        {
+            return ID + ": " + Name + " "+Type.Name;
+        }
     }
     
 }

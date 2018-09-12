@@ -9,7 +9,7 @@ namespace SimulinkIEC104
     public class SendingParameter : Parameter
     {
         [XmlIgnore]
-        ILinkedParameter SourceParameter;
+        public IEC104ReceiveParameter SourceParameter;
 
         public bool SetValue(float value)
         {
@@ -30,6 +30,16 @@ namespace SimulinkIEC104
             }
             //} catch { }
             return false;
+        }
+
+        public void ClearSourceParameter()
+        {
+            if (SourceParameter!=null)
+            {
+                SourceParameter.UDPparameters.Remove(this);
+                SourceParameter.NotifyUDPparameterIDsChanged();
+                SourceParameter = null;
+            }
         }
 
         public bool SetValue(double value)
@@ -113,6 +123,8 @@ namespace SimulinkIEC104
         {
             _valueChangedHadler += handler;
         }
+
+        
     }
 
 }

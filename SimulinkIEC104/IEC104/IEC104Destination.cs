@@ -16,7 +16,25 @@ namespace SimulinkIEC104
     {
         internal ApplicationLayerParameters _alp = new ApplicationLayerParameters();
         private string _name;
+        private int _port = 2404;
 
+        public UniqueID Uid = new UniqueID();
+
+        public int Port
+        {
+            get
+            {
+                return _port;
+            }
+            set
+            {
+                if (value > 0)
+                {
+                    _port = value;
+                }
+                else throw new WrongDataException("Порт задан неверно");
+            }
+        }
 
         public string Name
         {

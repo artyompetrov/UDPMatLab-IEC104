@@ -16,7 +16,43 @@ namespace SimulinkIEC104
         
         private float? _value = null;
 
-        public int IOA { get; set; }
+        internal UniqueID _uid;
+        private int _ioa;
+
+        public void DeleteIOA()
+        {
+            _uid.DeleteParameter(this);
+        }
+        
+        public int IOA
+        {
+            get
+            {
+                if (_uid == null)
+                {
+                    return _ioa;
+                }
+                else
+                {
+                    return _uid.Get(this);
+                }
+            }
+            set
+            {
+                if (_uid == null)
+                {
+                    _ioa = value;
+                }
+                else
+                {
+                    _uid.Set(this, value);
+                }
+            }
+        }
+
+        public abstract void SetCA(IEC104CommonAddress ca);
+
+        
 
         [XmlIgnore]
         public float Value

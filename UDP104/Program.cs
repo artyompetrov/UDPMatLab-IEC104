@@ -11,6 +11,7 @@ using System.Xml.Serialization;
 using SimulinkIEC104;
 using lib60870.CS104;
 using lib60870.CS101;
+using System.ComponentModel;
 
 namespace Matlab104Program
 {
@@ -21,7 +22,7 @@ namespace Matlab104Program
 
         private static string _configFileName = "database.xml";
         private static byte _debugLevel = 7;
-        private static List<Destination> _destinations;
+        private static BindingList<Destination> _destinations;
         private static Settings _settings;
         static Connection con;
         static ApplicationLayerParameters alp = new ApplicationLayerParameters();

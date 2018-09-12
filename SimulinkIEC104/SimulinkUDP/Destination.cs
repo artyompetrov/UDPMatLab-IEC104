@@ -270,7 +270,7 @@ namespace SimulinkIEC104
             return Name + " " + (_ip == null ? "noIP": _ip.ToString())+":"+_remotePort;
         }
 
-        public List<ReceivingParameter> ReceivingParameters { get; set; } = new List<ReceivingParameter>();
-        public List<SendingParameter> SendingParameters { get; set; } = new List<SendingParameter>();
+        public BindingList<ReceivingParameter> ReceivingParameters { get; set; } = new BindingList<ReceivingParameter>();
+        public BindingList<SendingParameter> SendingParameters { get; set; } = new BindingList<SendingParameter>();
     }
 }

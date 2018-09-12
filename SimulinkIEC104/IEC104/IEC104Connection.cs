@@ -11,7 +11,6 @@ namespace SimulinkIEC104
     public class IEC104Connection : IEC104Destination
     {
         Connection _connection;
-        private int _port = 2404;
         private string _ip;
 
         public string IP
@@ -31,21 +30,7 @@ namespace SimulinkIEC104
             }
         }
 
-        public int Port
-        {
-            get
-            {
-                return _port;
-            }
-            set
-            {
-                if (value > 0)
-                {
-                    _port = value;
-                }
-                else throw new WrongDataException("Порт задан неверно");
-            }
-        }
+
 
         public void Connect()
         { 
