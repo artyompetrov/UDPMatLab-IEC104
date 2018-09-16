@@ -33,15 +33,7 @@ namespace SimulinkIEC104
 
         }
 
-        public void ClearUDPparameters()
-        {
-            foreach (var param in UDPparameters)
-            {
-                param.SourceParameter = null;
-            }
-            UDPparameters.Clear();
-            NotifyPropertyChanged("UDPparameterIDs");
-        }
+        
 
         public void AddUDPparameter(SendingParameter param)
         {
@@ -110,6 +102,16 @@ namespace SimulinkIEC104
             {
                 udpParam.SetValue(Value);
             }
+        }
+
+        public override void ClearUDPParameter()
+        {
+            foreach (var param in UDPparameters)
+            {
+                param.SourceParameter = null;
+            }
+            UDPparameters.Clear();
+            NotifyPropertyChanged("UDPparameterIDs");
         }
     }
 }

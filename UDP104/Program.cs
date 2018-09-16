@@ -20,7 +20,7 @@ namespace Matlab104Program
         static System.Timers.Timer timer;
         static System.Timers.Timer timer2;
 
-        private static string _configFileName = "database.xml";
+        private static string _configFileName = "settings.xml";
         private static byte _debugLevel = 7;
         private static BindingList<Destination> _destinations;
         private static Settings _settings;

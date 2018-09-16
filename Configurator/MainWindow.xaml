@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Configurator"
         mc:Ignorable="d"
         xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
-        Title="MainWindow" Height="407.833" Width="1063.407" ResizeMode="CanMinimize">
+        Title="Конфигуратор обмена" Height="407.833" Width="1063.407" ResizeMode="CanMinimize">
     <Window.Resources>
         <col:ArrayList x:Key="arrList">
             <col:DictionaryEntry Key="Yes" Value="0"/>
@@ -22,10 +22,10 @@
             <TabControl SelectionChanged="_tabs_SelectionChanged" Name="_UDPTabs" HorizontalAlignment="Left" Height="300" Margin="174,21,0,0" VerticalAlignment="Top" Width="355">
                 <TabItem Header="Общие параметры">
                     <Grid Background="#FFE5E5E5">
-                        <TextBox Text="{Binding Name}" HorizontalAlignment="Left" Height="23" Margin="19,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                        <TextBox Text="{Binding Name}" HorizontalAlignment="Left" Height="23" Margin="19,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" LostFocus="UDPDestinationsTextBox_LostFocus"/>
                         <TextBox Text="{Binding LocalPort}" HorizontalAlignment="Left" Height="23" Margin="19,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                        <TextBox Text="{Binding RemotePort}" HorizontalAlignment="Left" Height="23" Margin="19,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                        <TextBox Text="{Binding IP}" HorizontalAlignment="Left" Height="23" Margin="19,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                        <TextBox Text="{Binding RemotePort}" LostFocus="UDPDestinationsTextBox_LostFocus" HorizontalAlignment="Left" Height="23" Margin="19,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                        <TextBox Text="{Binding IP}" LostFocus="UDPDestinationsTextBox_LostFocus" HorizontalAlignment="Left" Height="23" Margin="19,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
                     </Grid>
                 </TabItem>
@@ -56,8 +56,8 @@
 
                     <TabItem Header="Общие">
                         <Grid Background="#FFE5E5E5">
-                            <TextBox Text="{Binding Name}" HorizontalAlignment="Left" Height="23" Margin="10,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                            <TextBox Text="{Binding CA}" HorizontalAlignment="Left" Height="23" Margin="10,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox Text="{Binding Name}" LostFocus="CommonAddressTextBox_LostFocus" HorizontalAlignment="Left" Height="23" Margin="10,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox Text="{Binding CA, ValidatesOnExceptions=True}" HorizontalAlignment="Left" Height="23" Margin="10,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" LostFocus="CommonAddressTextBox_LostFocus"/>
                             <Label Content="Название:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                             <Label Content="Общий адрес ASDU:" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top"/>
                         </Grid>
@@ -83,7 +83,7 @@
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
-                                    <DataGridTextColumn Binding="{Binding IOA}" Header="Адрес 104" />
+                                    <DataGridTextColumn Binding="{Binding IOA, ValidatesOnExceptions=True}" Header="Адрес 104" />
 
 
                                 </DataGrid.Columns>
@@ -111,7 +111,7 @@
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
-                                    <DataGridTextColumn Binding="{Binding IOA}" Header="Адрес 104" />
+                                    <DataGridTextColumn Binding="{Binding IOA, ValidatesOnExceptions=True}" Header="Адрес 104" />
                                 </DataGrid.Columns>
 
                             </DataGrid>

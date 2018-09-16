@@ -169,22 +169,8 @@ namespace Configurator
             var param = (IEC104CommonAddress)_lbIEC104CommonAddresses.SelectedItem;
 
             ((IEC104Destination)_cbIEC104Destinations.SelectedItem).CommonAdreses.Remove(param);
-            param.DeleteCa();
-
-            foreach (var send in param.SendIOAs)
-            {
-                send.DeleteIOA();
-                send.ClearUDPParameter();
-
-            }
-            foreach (var recieve in param.ReceiveIOAs)
-            {
-
-                recieve.DeleteIOA();
-                recieve.ClearUDPparameters();
-
-            }
-
+            param.GetReadyToDelete();
+            
         }
 
         private void DataGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
@@ -269,8 +255,7 @@ namespace Configurator
             foreach (var item in arr)
             {
                 ((IEC104CommonAddress)_lbIEC104CommonAddresses.SelectedItem).ReceiveIOAs.Remove((IEC104ReceiveParameter)item);
-                ((IEC104ReceiveParameter)item).ClearUDPparameters();
-                ((IEC104Parameter)item).DeleteIOA();
+                ((IEC104Parameter)item).GetReadyToDelete();
             }
         }
 
@@ -293,8 +278,7 @@ namespace Configurator
             foreach (var item in arr)
             {
                 ((IEC104CommonAddress)_lbIEC104CommonAddresses.SelectedItem).SendIOAs.Remove((IEC104SendParameter)item);
-                ((IEC104SendParameter)item).ClearUDPParameter();
-                ((IEC104Parameter)item).DeleteIOA();
+                ((IEC104Parameter)item).GetReadyToDelete();
             }
         }
 
@@ -335,6 +319,14 @@ namespace Configurator
             }
         }
 
-       
+        private void CommonAddressTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            ((IEC104Destination)_cbIEC104Destinations.SelectedItem).CommonAdreses.ResetBindings();
+        }
+
+        private void UDPDestinationsTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            _settings.UDPDestinations.ResetBindings();
+        }
     }
 }

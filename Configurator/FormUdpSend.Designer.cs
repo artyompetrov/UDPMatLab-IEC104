@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.treeView1 = new MixedCheckBoxesTreeView();
             this.SuspendLayout();
             // 
             // treeView1
@@ -55,6 +55,6 @@
 
         #endregion
 
-        private System.Windows.Forms.TreeView treeView1;
+        private MixedCheckBoxesTreeView treeView1;
     }
 }

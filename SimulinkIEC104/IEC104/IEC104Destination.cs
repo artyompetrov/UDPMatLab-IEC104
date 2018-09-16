@@ -18,7 +18,7 @@ namespace SimulinkIEC104
         private string _name;
         private int _port = 2404;
 
-        public UniqueID Uid = new UniqueID();
+        public UniqueID CAUid = new UniqueID();
 
         public int Port
         {

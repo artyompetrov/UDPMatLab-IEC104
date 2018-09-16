@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
+﻿using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace SimulinkIEC104
 {
@@ -26,6 +23,7 @@ namespace SimulinkIEC104
             }
             set
             {
+                if (value < 0) throw new WrongDataException("Общий адрес не может быть меньше 0");
                 if (_uid == null)
                 {
                     _ca = value;
@@ -39,13 +37,24 @@ namespace SimulinkIEC104
 
         public void SetDestination(IEC104Destination dest)
         {
-            _uid = dest.Uid;
+            _uid = dest.CAUid;
             _uid.Set(this, _ca);
         }
 
-        public void DeleteCa()
+        public void GetReadyToDelete()
         {
             _uid.DeleteParameter(this);
+            foreach (var send in SendIOAs)
+            {
+                send.GetReadyToDelete();
+
+            }
+            foreach (var recieve in ReceiveIOAs)
+            {
+
+                recieve.GetReadyToDelete();
+
+            }
         }
 
         public string Name { get; set; }
@@ -64,15 +73,18 @@ namespace SimulinkIEC104
             {
                 if (recieveIOA.IOA == ioa) return recieveIOA;
             }
-
+            
             return null;
         }
+
+
 
         public IEC104CommonAddress() { }
 
         public IEC104CommonAddress(string name)
         {
             Name = name;
+            
         }
 
 

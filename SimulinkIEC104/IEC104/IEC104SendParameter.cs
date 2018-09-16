@@ -101,7 +101,8 @@ namespace SimulinkIEC104
             UDPParameter.LinkedParameters.Add(this);
             NotifyPropertyChanged("UDPParameterID");
         }
-        public void ClearUDPParameter()
+
+        public override void ClearUDPParameter()
         {
             if (UDPParameter != null)
             {
@@ -111,7 +112,7 @@ namespace SimulinkIEC104
 
             NotifyPropertyChanged("UDPParameterID");
         }
-         
+
         public IEC104SendParameter(int ioa)
         {
             IOA = ioa;

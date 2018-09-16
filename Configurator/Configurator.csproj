@@ -68,6 +68,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="HiddenCheckBoxTreeNode.cs" />
     <Compile Include="FormUdpSend.cs">
       <SubType>Form</SubType>
     </Compile>

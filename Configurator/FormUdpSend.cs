@@ -33,7 +33,7 @@ namespace Configurator
 
             foreach (var dest in _dest )
             {
-                TreeNode node = new TreeNode();
+                HiddenCheckBoxTreeNode node = new HiddenCheckBoxTreeNode();
                 treeView1.Nodes.Add(node);
                 node.Text = dest.ToString();
                 node.Expand();
@@ -67,9 +67,10 @@ namespace Configurator
             treeView1.CheckBoxes = true;
             foreach (var dest in _dest)
             {
-                TreeNode node = new TreeNode();
+                HiddenCheckBoxTreeNode node = new HiddenCheckBoxTreeNode();
                 treeView1.Nodes.Add(node);
                 node.Text = dest.ToString();
+                
                 node.Expand();
                 foreach (var receiveParam in dest.ReceivingParameters)
                 {
@@ -89,12 +90,13 @@ namespace Configurator
             }
         }
 
+        
 
         private void FormUdpSend_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (_receive)
             {
-                _iec104ReceiveP.ClearUDPparameters();
+                _iec104ReceiveP.ClearUDPParameter();
                 foreach (var node in nodes)
                 {
                     if (node.Checked)

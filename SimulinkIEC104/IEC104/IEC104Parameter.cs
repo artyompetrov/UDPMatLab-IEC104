@@ -19,9 +19,17 @@ namespace SimulinkIEC104
         internal UniqueID _uid;
         private int _ioa;
 
-        public void DeleteIOA()
+        public abstract void ClearUDPParameter();
+
+        private void DeleteIOA()
         {
             _uid.DeleteParameter(this);
+        }
+
+        public void GetReadyToDelete()
+        {
+            DeleteIOA();
+            ClearUDPParameter();
         }
         
         public int IOA
@@ -39,6 +47,7 @@ namespace SimulinkIEC104
             }
             set
             {
+                if (value < 0) throw new WrongDataException("Адрес объекта информации не может быть меньше 0");
                 if (_uid == null)
                 {
                     _ioa = value;
