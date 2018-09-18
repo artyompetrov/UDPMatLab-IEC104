@@ -309,6 +309,8 @@ namespace lib60870.CS104
 		private string localHostname = "0.0.0.0";
 		private int localPort = 2404;
 
+
+
 		private bool running = false;
 
 		private Socket listeningSocket;
@@ -384,8 +386,14 @@ namespace lib60870.CS104
 			this.alParameters = new ApplicationLayerParameters ();
 		}
 
+        public Server(int port)
+        {
+            this.apciParameters = new APCIParameters();
+            this.alParameters = new ApplicationLayerParameters();
+            localPort = port;
+        }
 
-		public Server (TlsSecurityInformation securityInfo)
+        public Server (TlsSecurityInformation securityInfo)
 		{
 			this.apciParameters = new APCIParameters ();
 			this.alParameters = new ApplicationLayerParameters ();

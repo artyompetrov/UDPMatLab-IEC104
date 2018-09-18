@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 
 namespace SimulinkIEC104
 {
-    public delegate void IEC104ParameterValueChangedHadler(IEC104Parameter data);
+    public delegate void IEC104ParameterValueChangedHadler(IEC104SendParameter data);
 
 
     [XmlInclude(typeof(IEC104SendParameter))]
@@ -18,7 +18,8 @@ namespace SimulinkIEC104
 
         internal UniqueID _uid;
         private int _ioa;
-
+        [XmlIgnore]
+        public IEC104CommonAddress Ca;
         public abstract void ClearUDPParameter();
 
         private void DeleteIOA()

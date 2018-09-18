@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace SimulinkIEC104
 {
@@ -58,8 +59,9 @@ namespace SimulinkIEC104
         }
 
         public string Name { get; set; }
-
+        [XmlIgnore]
         public UniqueID SendUniqueIOA = new UniqueID();
+        [XmlIgnore]
         public UniqueID RecieveUniqueIOA = new UniqueID();
 
         public BindingList<IEC104SendParameter> SendIOAs { get; set; }  = new BindingList<IEC104SendParameter>();

@@ -50,7 +50,7 @@ namespace Serializator
 
             var IEC104dest = new IEC104Connection("127.0.0.1", 2405);
 
-            IEC104dest.CommonAdreses.Add(new IEC104CommonAddress(0));
+            IEC104dest.CommonAdreses.Add(new IEC104CommonAddress());
 
 
             var ps1 = new IEC104SendParameter(1);

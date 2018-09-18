@@ -17,15 +17,13 @@ namespace Matlab104Program
 {
     class Program
     {
-        static System.Timers.Timer timer;
-        static System.Timers.Timer timer2;
+        
+
 
         private static string _configFileName = "settings.xml";
         private static byte _debugLevel = 7;
         private static BindingList<Destination> _destinations;
         private static Settings _settings;
-        static Connection con;
-        static ApplicationLayerParameters alp = new ApplicationLayerParameters();
         static void Main(string[] args)
         {
 
@@ -62,6 +60,7 @@ namespace Matlab104Program
                 _destinations[i].UdpClientStart();    
             }
             
+
             foreach (var dest in _settings.IEC104Destinations)
             { 
                 foreach (var paramGroup in dest.CommonAdreses)
@@ -70,69 +69,32 @@ namespace Matlab104Program
                     {
                         sp.SubscribeOnUDPParameterChanged();
                     }
+
                 }
             }
 
             foreach (var dest in _settings.IEC104Destinations)
             {
-                if (dest.GetType() == typeof(IEC104Connection))
-                {
-                    ((IEC104Connection)dest).Connect();
-
-
-                }
+                dest.Initialize();
             }
 
-            /*
-            timer = new System.Timers.Timer(3000);
-            timer.Elapsed += _changeDataOnTimer;
-            timer.Start();
-
-            timer2 = new System.Timers.Timer(3000);
-            timer2.Elapsed += _changeDataOnTimer2;
-            timer2.Start();
-            */
+           
 
 
 
             Console.ReadKey();
         }
-
-        private static bool _asduReceived(object parameter, ASDU asdu)
-        {
-            _debugMessage("asdu", 6);
-            return true;
-        }
-
-        private static void _changeDataOnTimer(object sender, ElapsedEventArgs e)
-        {
-            _destinations[0].SendingParameters[0].SetValue(4.3f);
-            _destinations[0].SendingParameters[1].SetValue(3);
-
-            
-            ASDU asdu = new ASDU(alp, TypeID.M_ME_NC_1, CauseOfTransmission.SPONTANEOUS, false, false, 2, 0, false);
-            asdu.AddInformationObject(new MeasuredValueShort(1, -1, new QualityDescriptor()));
+        
 
 
-            con.SendASDU(asdu);
-        }
+        
 
         private static void _debugMessage(Destination destination, string message, byte debugLevel)
         {
             _debugMessage(destination.LocalPort + " -> " + destination.IP + ":" + destination.RemotePort + ": " + message, debugLevel);
         }
 
-        private static void _changeDataOnTimer2(object sender, ElapsedEventArgs e)
-        {
-            _destinations[0].SendingParameters[0].SetValue(15.5);
-            _destinations[0].SendingParameters[1].SetValue(5);
-
-            ASDU asdu = new ASDU(alp, TypeID.M_ME_NC_1, CauseOfTransmission.SPONTANEOUS, false, false, 2, 0, false);
-            asdu.AddInformationObject(new MeasuredValueShort(1, 1, new QualityDescriptor()));
-
-
-            con.SendASDU(asdu);
-        }
+      
 
         private static void _dataReceived(Parameter data)
         {

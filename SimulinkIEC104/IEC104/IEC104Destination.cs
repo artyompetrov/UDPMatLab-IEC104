@@ -17,8 +17,9 @@ namespace SimulinkIEC104
         internal ApplicationLayerParameters _alp = new ApplicationLayerParameters();
         private string _name;
         private int _port = 2404;
-
+        [XmlIgnore]
         public UniqueID CAUid = new UniqueID();
+        abstract public void Initialize();
 
         public int Port
         {
@@ -67,7 +68,7 @@ namespace SimulinkIEC104
             {
                 foreach (IEC104SendParameter sp in ca.SendIOAs)
                 {
-                    sp.SetValueChangedHandler(Send);
+                    sp.SetValueChangedHandler(Send, ca);
                 } 
                 
             }
@@ -114,7 +115,7 @@ namespace SimulinkIEC104
                             recievePar.Value = ((MeasuredValueShort)io).Value;
                             break;
                         default:
-                            Console.WriteLine("debug полчено сообщение с неизвестным типом");
+                            Console.WriteLine("debug полчено сообщение с неизвестным типом "+ io.Type.ToString());
                             break;
                     }
                 }
@@ -125,7 +126,7 @@ namespace SimulinkIEC104
 
         }
 
-        internal abstract void Send(IEC104Parameter data);
+        internal abstract void Send(IEC104SendParameter data);
 
         public override string ToString()
         {

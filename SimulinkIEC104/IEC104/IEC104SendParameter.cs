@@ -14,6 +14,7 @@ namespace SimulinkIEC104
         private IEC104ParameterValueChangedHadler _valueChangedHadler;
 
         public event PropertyChangedEventHandler PropertyChanged;
+        
 
         private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
@@ -22,9 +23,11 @@ namespace SimulinkIEC104
 
         public override void SetCA(IEC104CommonAddress ca)
         {
+            Ca = ca;
             _uid = ca.SendUniqueIOA;
 
         }
+
         public int? UDPParameterID
         {
             get
@@ -65,6 +68,7 @@ namespace SimulinkIEC104
 
         private void _udpParamChanged(Parameter data)
         {
+            
             switch(data.DataType)
             {
                 case DataTypeEnum.Double:
@@ -81,9 +85,10 @@ namespace SimulinkIEC104
             
         }
 
-        public void SetValueChangedHandler(IEC104ParameterValueChangedHadler handler)
+        public void SetValueChangedHandler(IEC104ParameterValueChangedHadler handler, IEC104CommonAddress ca)
         {
             _valueChangedHadler = handler;
+            Ca = ca;
         }
 
         internal override void _valueChanged()
