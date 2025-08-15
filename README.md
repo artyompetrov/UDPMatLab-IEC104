@@ -1,4 +1,4 @@
-# Data exchange interface between Simulink Desktop Real-Time and external SCADA systems via IEC 60870-5-104
+# Data exchange interface between Simulink Desktop Real-Time and external SCADA systems via IEC 60870-5-104 
 
 This repository provides a tool for organizing data exchange between Simulink Desktop Real-Time and external SCADA systems that support the IEC 60870-5-104 protocol.
 
